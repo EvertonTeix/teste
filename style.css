@@ -346,28 +346,31 @@ body {
 /* Responsiveness */
 @media (max-width: 900px) {
     .header::before {
-        width: 100%;
-        height: 190px;
-        border-radius: 0 0 45% 45%;
+        display: none; /* Desativa a curva absoluta no celular */
     }
 
     .header-content {
         flex-direction: column;
         text-align: center;
-        padding-top: 1rem;
+        padding-top: 0; /* Remove padding topo para o branco encostar em cima */
         gap: 1.5rem;
         margin-top: 0;
     }
 
     .logo-container {
         width: 100%;
-        height: 150px;
-        margin-bottom: 2.5rem;
+        height: auto;
+        background-color: var(--white);
+        padding: 1.5rem 1rem 3rem 1rem; /* Espaço ao redor da logo, o 3rem embaixo empurra a curva */
+        border-radius: 0 0 45% 45%; /* A curva agora é no próprio container! */
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .logo {
-        max-width: 190px;
+        max-width: 200px;
         filter: contrast(1.1) brightness(1.05);
+        margin: 0 auto;
     }
 
     .header-info {
