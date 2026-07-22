@@ -17,9 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => {
-        observer.observe(el);
-    });
+    
+    // Pequeno atraso para garantir que o layout foi renderizado no mobile
+    setTimeout(() => {
+        fadeElements.forEach(el => {
+            observer.observe(el);
+            // Fallback manual para garantir que elementos visíveis inicialmente apareçam sem precisar do scroll
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                el.classList.add('visible');
+            }
+        });
+    }, 150);
 
     // Handle logo image load error gracefully
     const logoImg = document.getElementById('logo-img');
